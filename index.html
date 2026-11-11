@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<script>(function(){var u=navigator.userAgent||'',h=location.href,L=(navigator.language||'ko').slice(0,2),and=/Android/i.test(u);if(!/^https?:/.test(h))return;
+var ext=null;
+if(/KAKAOTALK/i.test(u))ext='kakaotalk://web/openExternal?url='+encodeURIComponent(h);
+else if(/Line\//i.test(u)&&h.indexOf('openExternalBrowser')<0)ext=h+(h.indexOf('?')<0?'?':'&')+'openExternalBrowser=1';
+else if(and&&/NAVER\(inapp|Instagram|FBAN|FBAV|FB_IAB|DaumApps|everytimeApp|BAND\//i.test(u))ext='intent://'+h.replace(/^https?:\/\//,'')+'#Intent;scheme=https;package=com.android.chrome;end';
+if(!ext)return;window.__extUrl=ext;if(!window.__noExtNav)location.replace(ext);
+if(and&&/KAKAOTALK/i.test(u)&&!window.__noExtNav)setTimeout(function(){location.href='kakaotalk://inappbrowser/close';},1500);
+try{window.stop();}catch(e){}
+var T={ko:['브라우저에서 여는 중이에요','열리지 않으면 아래 버튼을 누르거나, 오른쪽 위 메뉴에서 <b>다른 브라우저로 열기</b>를 골라 주세요.','다시 열기'],ja:['ブラウザで開いています','開かない場合は下のボタンか、右上のメニューの<b>ブラウザで開く</b>を選んでください。','もう一度開く'],zh:['正在用浏览器打开','如果没有打开，请点下面的按钮，或在右上角菜单选择<b>用浏览器打开</b>。','重新打开']}[L]||['Opening in your browser','If nothing happens, tap the button below or choose <b>Open in browser</b> from the menu.','Open again'];
+document.documentElement.innerHTML=('<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;height:100vh;display:flex;align-items:center;justify-content:center;background:#070a14;color:#eef2ff;font:15px/1.6 system-ui,sans-serif;text-align:center;padding:24px;box-sizing:border-box"><div><b style="font-size:20px">'+T[0]+'</b><p style="color:#8e98bd">'+T[1]+'</p><a id="ext" href="'+ext.replace(/"/g,'&quot;')+'" style="display:inline-block;margin-top:6px;padding:12px 24px;border-radius:14px;background:#ff6a1a;color:#fff;font-weight:800;text-decoration:none">'+T[2]+'</a></div></body>');})();</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>원피스 랜덤 디펜스</title>
 <meta name="theme-color" content="#06121f">
