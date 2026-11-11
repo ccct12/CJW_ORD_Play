@@ -342,12 +342,6 @@ body.arena #bubble { top:calc(env(safe-area-inset-top) + 70px); }
 #stage::after { content:""; position:absolute; inset:0; pointer-events:none; z-index:1; background:radial-gradient(ellipse at 50% 50%, transparent 55%, #04101a99 100%); }
 #cv { z-index:2; }
 #cv.panning { cursor:grabbing; }
-/* 나랜디 경험자 안내 · 비교표 */
-.nrdhint { display:flex; gap:8px; align-items:flex-start; margin:0 0 10px; padding:8px 12px; border-radius:12px; font-size:12.5px; line-height:1.45; color:#cfe3ff; background:#4c6bff1f; box-shadow:inset 0 0 0 1px #4c6bff44; }
-.nrdhint .svg { flex:none; width:16px; height:16px; margin-top:1px; opacity:.8; }
-.nrdt { width:100%; border-collapse:collapse; font-size:13px; margin:2px 0 6px; }
-.nrdt th { text-align:left; font-size:11px; color:var(--dim); font-weight:700; padding:2px 6px; }
-.nrdt td { padding:6px; border-top:1px solid #ffffff10; }
 </style>
 
 <div id="app">
@@ -374,10 +368,10 @@ body.arena #bubble { top:calc(env(safe-area-inset-top) + 70px); }
 <script>globalThis.ORD_I18N_SPLIT=1;(function(){var L=["en","ja","zh-Hans","zh-Hant"],q=new URLSearchParams(location.search).get('lang'),s=null;try{s=localStorage.getItem('cjw.lang');if(!s||(s!=='ko'&&L.indexOf(s)<0))s=localStorage.getItem('ord.lang')}catch(e){}
 var l=(q&&(q==='ko'||L.indexOf(q)>=0))?q:(s&&(s==='ko'||L.indexOf(s)>=0))?s:null;if(!l){var n=(navigator.language||'en').toLowerCase();l=n.indexOf('ko')===0?'ko':n.indexOf('ja')===0?'ja':n.indexOf('zh')===0?(/tw|hk|mo|hant/.test(n)?'zh-Hant':'zh-Hans'):'en';}
 if(l!=='ko')document.write('<script src="i18n-'+l+'.js?v=be43a38605"><\/script>');})();</script>
-<script src="art-index.js?v=648c4b710f"></script>
+<script src="art-index.js?v=cdfd0ffa09"></script>
 <script src="ord-stage.js?v=e719f0e50a"></script>
 <script src="ord-stage3d.js?v=a2adfa091e"></script>
 <script src="pack.js?v=9349849b52"></script>
-<script src="app.js?v=039762fd92"></script>
+<script src="app.js?v=6fcf79d364"></script>
 <script src="https://ccct12.github.io/CJW_Games/sdk.js" async onload="try{CJWHub.visit('ord')}catch(e){}"></script>
 <script>if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){var hadSW=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',function(){if(!hadSW)return;var d=document.getElementById('dialog');if(d&&d.classList.contains('on')&&!sessionStorage.getItem('ord.swr')){sessionStorage.setItem('ord.swr','1');location.reload();}});addEventListener('load',function(){navigator.serviceWorker.register('sw.js').then(function(r){r.update();}).catch(function(){});});}</script>
