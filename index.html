@@ -239,6 +239,7 @@ body.rotate #rotate { display:flex; }
 @keyframes rot { 0%,20% { transform:rotate(0); } 55%,100% { transform:rotate(-90deg); } }
 
 /* 세로 화면 배치는 없음(가로 전용, 세로로 들면 #rotate 안내) */
+.res-in { display:none !important; }
 /* 낮은 가로 화면(폰) */
 @media (max-height: 430px) {
   #lside, #rside { gap:4px; padding-top:calc(env(safe-area-inset-top) + 4px); padding-bottom:calc(env(safe-area-inset-bottom) + 4px); }
@@ -283,6 +284,33 @@ body.arena #zonebar { display:flex; } body.arena #msgs { top:calc(env(safe-area-
 .trow.go .ti { background:#fff3; color:#fff; } .trow.go b { color:#fff; }
 body.arena #bg, body.arena #sminiw { visibility:hidden; display:none; }
 body.arena #sel.none { display:none; }
+
+/* 시작 화면(화면을 눌러 시작 → 가로 전체 화면) */
+#launch { position:fixed; inset:0; z-index:300; display:none; align-items:center; justify-content:center; padding:24px; text-align:center; cursor:pointer; background:radial-gradient(700px 420px at 50% 40%, #233060, #070a14 70%); }
+#launch.on { display:flex; }
+#launch .lbox { display:flex; flex-direction:column; align-items:center; gap:12px; max-width:420px; }
+#launch b { font-size:22px; } #launch span { color:var(--dim); font-size:14px; line-height:1.6; }
+#launch .lphone { width:96px; height:56px; border:4px solid var(--gold2); border-radius:12px; box-shadow:0 0 24px #ff9a3c66; animation:lpulse 1.2s ease-in-out infinite alternate; }
+@keyframes lpulse { to { transform:scale(1.08); box-shadow:0 0 36px #ff9a3caa; } }
+
+/* 스토리 컷신(나루토 랜디처럼 아래쪽 대화창, 게임 멈춤) */
+#dlg { position:fixed; inset:0; z-index:90; display:none; align-items:flex-end; justify-content:center; padding:0 12px calc(env(safe-area-inset-bottom) + 14px); background:linear-gradient(#0000 40%, #02040acc); cursor:pointer; }
+#dlg.on { display:flex; animation:fade .2s ease; }
+#dlg .box { position:relative; width:min(760px,96vw); display:flex; gap:14px; align-items:flex-start; padding:16px 18px 34px; border-radius:20px; background:linear-gradient(170deg,#1b2342f5,#0b0f1ef5); box-shadow:0 0 0 1px var(--line2), 0 0 40px #ff7a1a22, 0 20px 50px #000; animation:up .25s cubic-bezier(.2,1.2,.4,1); }
+#dlg .box.narr { background:linear-gradient(170deg,#2a1d0ef5,#120c06f5); box-shadow:0 0 0 1px #ffb43a55, 0 20px 50px #000; }
+#dlg .sp { width:76px; height:76px; border-radius:16px; flex:none; box-shadow:0 0 0 2px var(--gold2), 0 0 18px #ffb43a55; background:#0b1022; }
+#dlg .tx { flex:1; min-width:0; } #dlg .tx b { display:block; font-size:16px; color:var(--gold2); margin-bottom:4px; }
+#dlg .tx p { margin:0; font-size:15.5px; line-height:1.6; color:#eef2ff; } #dlg .narr .tx p { color:#ffe6b8; font-style:italic; }
+#dlg .nav { position:absolute; left:18px; right:12px; bottom:8px; display:flex; align-items:center; justify-content:space-between; font-size:11px; color:var(--dim); }
+#dlg .nav button { min-height:26px; padding:2px 10px; font-size:11px; border-radius:14px; }
+@media (max-height: 430px) { #dlg .sp { width:56px; height:56px; } #dlg .tx p { font-size:13.5px; } #dlg .box { padding:12px 14px 30px; } }
+/* 말풍선(진행 중 표시) */
+#bubble { position:fixed; left:50%; top:calc(env(safe-area-inset-top) + 60px); transform:translate(-50%,-8px); z-index:40; display:flex; gap:10px; align-items:center; max-width:min(520px,60vw); padding:8px 14px 8px 8px; border-radius:16px; opacity:0; pointer-events:none;
+  background:linear-gradient(160deg,#1b2342f0,#0b0f1ef0); box-shadow:0 0 0 1px var(--line2), 0 10px 30px #000c; transition:opacity .25s, transform .3s cubic-bezier(.2,1.4,.4,1); }
+#bubble.on { opacity:1; transform:translate(-50%,0); pointer-events:auto; }
+#bubble .sp { width:44px; height:44px; border-radius:12px; flex:none; box-shadow:0 0 0 2px var(--gold2); }
+#bubble b { display:block; font-size:12.5px; color:var(--gold2); } #bubble span { font-size:13px; line-height:1.45; }
+body.arena #bubble { top:calc(env(safe-area-inset-top) + 70px); }
 </style>
 
 <div id="app">
@@ -304,7 +332,8 @@ body.arena #sel.none { display:none; }
 <button id="arena-x" class="pri"></button>
 <div id="toast"></div>
 <div id="panel"><div id="sheet"><header><button id="pback" data-act="back" hidden>‹</button><span id="ptitle"></span><button id="pclose"></button></header><div class="body" id="pbody"></div></div></div>
-<div id="dialog"></div><div id="ask"></div><div id="end"><div class="box" id="endbox"></div></div><div id="tut"><div class="ring"></div><div class="tbox"></div></div><div id="rotate"></div><div id="tip"></div>
+<div id="dialog"></div><div id="ask"></div><div id="end"><div class="box" id="endbox"></div></div><div id="tut"><div class="ring"></div><div class="tbox"></div></div><div id="rotate"></div>
+<div id="launch"></div><div id="dlg"></div><div id="bubble"></div><div id="tip"></div>
 <script>globalThis.ORD_I18N_SPLIT=1;(function(){var L=["en","ja","zh-Hans","zh-Hant"],q=new URLSearchParams(location.search).get('lang'),s=null;try{s=localStorage.getItem('cjw.lang');if(!s||(s!=='ko'&&L.indexOf(s)<0))s=localStorage.getItem('ord.lang')}catch(e){}
 var l=(q&&(q==='ko'||L.indexOf(q)>=0))?q:(s&&(s==='ko'||L.indexOf(s)>=0))?s:null;if(!l){var n=(navigator.language||'en').toLowerCase();l=n.indexOf('ko')===0?'ko':n.indexOf('ja')===0?'ja':n.indexOf('zh')===0?(/tw|hk|mo|hant/.test(n)?'zh-Hant':'zh-Hans'):'en';}
 if(l!=='ko')document.write('<script src="i18n-'+l+'.js"><\/script>');})();</script>
