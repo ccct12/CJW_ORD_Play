@@ -342,6 +342,11 @@ body.arena #bubble { top:calc(env(safe-area-inset-top) + 70px); }
 #stage::after { content:""; position:absolute; inset:0; pointer-events:none; z-index:1; background:radial-gradient(ellipse at 50% 50%, transparent 55%, #04101a99 100%); }
 #cv { z-index:2; }
 #cv.panning { cursor:grabbing; }
+
+/* PC 넓은 화면: 스토리 존을 오른쪽 위에 큰 창으로 늘 함께 보여 준다(모바일은 화면 전환) */
+body.pcsplit #sminiw { position:fixed; right:12px; top:calc(env(safe-area-inset-top) + 64px); width:min(34vw, 520px); z-index:30; padding:6px; gap:5px; }
+body.pcsplit #smini { height:auto; aspect-ratio: 4 / 3; }
+body.pcsplit #sminit { font-size:12.5px; }
 </style>
 
 <div id="app">
@@ -368,11 +373,11 @@ body.arena #bubble { top:calc(env(safe-area-inset-top) + 70px); }
 <script>globalThis.ORD_I18N_SPLIT=1;(function(){var L=["en","ja","zh-Hans","zh-Hant"],q=new URLSearchParams(location.search).get('lang'),s=null;try{s=localStorage.getItem('cjw.lang');if(!s||(s!=='ko'&&L.indexOf(s)<0))s=localStorage.getItem('ord.lang')}catch(e){}
 var l=(q&&(q==='ko'||L.indexOf(q)>=0))?q:(s&&(s==='ko'||L.indexOf(s)>=0))?s:null;if(!l){var n=(navigator.language||'en').toLowerCase();l=n.indexOf('ko')===0?'ko':n.indexOf('ja')===0?'ja':n.indexOf('zh')===0?(/tw|hk|mo|hant/.test(n)?'zh-Hant':'zh-Hans'):'en';}
 if(l!=='ko')document.write('<script src="i18n-'+l+'.js?v=be43a38605"><\/script>');})();</script>
-<script src="art-index.js?v=b470fd6562"></script>
+<script src="art-index.js?v=5a74ab04f9"></script>
 <script src="ord-stage.js?v=e719f0e50a"></script>
 <script src="ord-stage3d.js?v=a2adfa091e"></script>
 <script src="ord-maps.js?v=0819395b56"></script>
 <script src="pack.js?v=9349849b52"></script>
-<script src="app.js?v=e1315b9fec"></script>
+<script src="app.js?v=b75cb19d26"></script>
 <script src="https://ccct12.github.io/CJW_Games/sdk.js" async onload="try{CJWHub.visit('ord')}catch(e){}"></script>
 <script>if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){var hadSW=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',function(){if(!hadSW)return;var d=document.getElementById('dialog');if(d&&d.classList.contains('on')&&!sessionStorage.getItem('ord.swr')){sessionStorage.setItem('ord.swr','1');location.reload();}});addEventListener('load',function(){navigator.serviceWorker.register('sw.js').then(function(r){r.update();}).catch(function(){});});}</script>
