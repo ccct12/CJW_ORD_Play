@@ -5,7 +5,7 @@ var ext=null;
 if(/KAKAOTALK/i.test(u))ext='kakaotalk://web/openExternal?url='+encodeURIComponent(h);
 else if(/Line\//i.test(u)&&h.indexOf('openExternalBrowser')<0)ext=h+(h.indexOf('?')<0?'?':'&')+'openExternalBrowser=1';
 else if(and&&/NAVER\(inapp|Instagram|FBAN|FBAV|FB_IAB|DaumApps|everytimeApp|BAND\//i.test(u))ext='intent://'+h.replace(/^https?:\/\//,'')+'#Intent;scheme=https;package=com.android.chrome;end';
-if(!ext)return;window.__extUrl=ext;if(!window.__noExtNav)location.replace(ext);
+if(!ext)return;window.__extUrl=ext;if(!window.__noExtNav)location.href=ext;
 if(and&&/KAKAOTALK/i.test(u)&&!window.__noExtNav)setTimeout(function(){location.href='kakaotalk://inappbrowser/close';},1500);
 try{window.stop();}catch(e){}
 var T={ko:['브라우저에서 여는 중이에요','열리지 않으면 아래 버튼을 누르거나, 오른쪽 위 메뉴에서 <b>다른 브라우저로 열기</b>를 골라 주세요.','다시 열기'],ja:['ブラウザで開いています','開かない場合は下のボタンか、右上のメニューの<b>ブラウザで開く</b>を選んでください。','もう一度開く'],zh:['正在用浏览器打开','如果没有打开，请点下面的按钮，或在右上角菜单选择<b>用浏览器打开</b>。','重新打开']}[L]||['Opening in your browser','If nothing happens, tap the button below or choose <b>Open in browser</b> from the menu.','Open again'];

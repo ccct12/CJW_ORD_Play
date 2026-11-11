@@ -1,5 +1,6 @@
-const V='ord-46f6cb383954';const PRE=["./","app.js","art-index.js","i18n-en.js","i18n-ja.js","i18n-zh-Hans.js","i18n-zh-Hant.js","index.html","ord-stage.js","ord-stage3d.js","pack.js","pk-fx.webp","pk-icons.webp","pk-sound.mp3","pk-sprites.webp"];
-self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(V).then(c=>c.addAll(PRE)));});
-self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith('ord-')&&k!==V).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
+const V='ord-67df42c6e259';const PRE=["./","app.js","art-index.js","i18n-en.js","i18n-ja.js","i18n-zh-Hans.js","i18n-zh-Hant.js","index.html","ord-stage.js","ord-stage3d.js","pack.js","pk-fx.webp","pk-icons.webp","pk-sound.mp3","pk-sprites.webp"];
+self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(V).then(c=>c.addAll(['./','index.html']).catch(()=>{})));});
+self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith('ord-')&&k!==V).map(k=>caches.delete(k)))).then(()=>self.clients.claim()).then(()=>{caches.open(V).then(c=>Promise.all(PRE.map(f=>c.match(f).then(m=>m||c.add(f).catch(()=>{})))));}));});
 self.addEventListener('fetch',e=>{const r=e.request;if(r.method!=='GET')return;const u=new URL(r.url);if(u.origin!==location.origin||!u.pathname.startsWith(new URL('./',location).pathname))return;
+if(r.mode==='navigate'||u.pathname.endsWith('/')||u.pathname.endsWith('.html')){e.respondWith(fetch(r.url,{cache:'no-cache',credentials:'same-origin'}).then(res=>{if(res.ok){const cp=res.clone();caches.open(V).then(c=>c.put('./',cp));}return res;}).catch(()=>caches.open(V).then(c=>c.match('./'))));return;}
 e.respondWith(caches.open(V).then(c=>c.match(r,{ignoreSearch:true}).then(hit=>hit||fetch(r).then(res=>{if(res.ok&&res.type==='basic')c.put(r,res.clone());return res;}))));});
