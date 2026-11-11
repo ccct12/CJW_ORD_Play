@@ -3,6 +3,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>원피스 랜덤 디펜스</title>
 <meta name="theme-color" content="#06121f">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <style>/* 원랜디 화면 — 나루토 랜디(CJW_NRD)와 같은 구성(전장 전체화면 · 왼쪽 정보 · 오른쪽 아래 3×3 명령 카드 · 가운데 창).
    원피스 만화풍: 누런 종이 패널 + 먹색 굵은 테두리와 딱딱한 그림자 + 밀짚모자 빨강·볏짚 노랑. 유리·네온 효과는 쓰지 않는다. */
 :root {
@@ -275,10 +280,12 @@ body.portrait #msgs { width:auto; left:10px; right:10px; transform:none; top:cal
 <div id="toast"></div>
 <div id="panel"><div id="sheet"><header><button id="pback" data-act="back" hidden>‹</button><span id="ptitle"></span><button id="pclose"></button></header><div class="body" id="pbody"></div></div></div>
 <div id="dialog"></div><div id="ask"></div><div id="end"><div class="box" id="endbox"></div></div><div id="tut"><div class="ring"></div><div class="tbox"></div></div><div id="rotate"></div><div id="tip"></div>
-<script>globalThis.ORD_I18N_SPLIT=1;(function(){var L=["en","ja","zh-Hans","zh-Hant"],q=new URLSearchParams(location.search).get('lang'),s=null;try{s=localStorage.getItem('ord.lang')}catch(e){}
+<script>globalThis.ORD_I18N_SPLIT=1;(function(){var L=["en","ja","zh-Hans","zh-Hant"],q=new URLSearchParams(location.search).get('lang'),s=null;try{s=localStorage.getItem('cjw.lang');if(!s||(s!=='ko'&&L.indexOf(s)<0))s=localStorage.getItem('ord.lang')}catch(e){}
 var l=(q&&(q==='ko'||L.indexOf(q)>=0))?q:(s&&(s==='ko'||L.indexOf(s)>=0))?s:null;if(!l){var n=(navigator.language||'en').toLowerCase();l=n.indexOf('ko')===0?'ko':n.indexOf('ja')===0?'ja':n.indexOf('zh')===0?(/tw|hk|mo|hant/.test(n)?'zh-Hant':'zh-Hans'):'en';}
 if(l!=='ko')document.write('<script src="i18n-'+l+'.js"><\/script>');})();</script>
 <script src="art-index.js"></script>
 <script src="ord-stage.js"></script>
 <script src="pack.js"></script>
 <script src="app.js"></script>
+<script src="https://ccct12.github.io/CJW_Games/sdk.js" async onload="try{CJWHub.visit('ord')}catch(e){}"></script>
+<script>if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});</script>
