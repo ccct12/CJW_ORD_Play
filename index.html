@@ -316,4 +316,4 @@ if(l!=='ko')document.write('<script src="i18n-'+l+'.js"><\/script>');})();</scri
 <script src="pack.js"></script>
 <script src="app.js"></script>
 <script src="https://ccct12.github.io/CJW_Games/sdk.js" async onload="try{CJWHub.visit('ord')}catch(e){}"></script>
-<script>if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});</script>
+<script>if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){var hadSW=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',function(){if(!hadSW)return;var d=document.getElementById('dialog');if(d&&d.classList.contains('on')&&!sessionStorage.getItem('ord.swr')){sessionStorage.setItem('ord.swr','1');location.reload();}});addEventListener('load',function(){navigator.serviceWorker.register('sw.js').then(function(r){r.update();}).catch(function(){});});}</script>
