@@ -25,7 +25,7 @@ document.documentElement.innerHTML=('<head><meta charset="utf-8"><meta name="vie
 :root {
   --bg:#070a14; --card:#141a2e; --card2:#0e1324; --line:#26304f; --line2:#34406a; --gold:#ffb43a; --gold2:#ffd27a; --txt:#eef2ff; --dim:#8e98bd;
   --acc:#ff7a1a; --acc2:#ff4d1a; --good:#35e08a; --bad:#ff4d5e; --chak:#4cc3ff; --mp:#3a8aff; --red:#ff4d5e;
-  --frame:0 0 0 1px var(--line), inset 0 1px 0 #ffffff10; --glass:linear-gradient(160deg,#141b33c7,#0a0f1ec7); --r:14px;
+  --frame:0 0 0 1px var(--line), inset 0 1px 0 #ffffff10; --glass:linear-gradient(160deg,#1a2240ee,#0d1222ee); --r:14px;
 }
 * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 html,body { margin:0; height:100%; overflow:hidden; color:var(--txt); background:var(--bg); overscroll-behavior:none; -webkit-user-select:none; user-select:none; letter-spacing:-.01em;
@@ -336,6 +336,12 @@ body.arena #bubble { top:calc(env(safe-area-inset-top) + 70px); }
 #hud .row1 .tag { font-size:11px; padding:2px 8px; }
 #hud .row1 .tag { letter-spacing:0; }
 @media (max-width:820px) { #hud { gap:6px; padding:5px 6px; } #hud .enm b { font-size:15px; } #hud .enm { font-size:10px; } }
+
+/* 배경 색감: 나루토 랜디처럼 바다·섬을 한 톤 가라앉혀 유닛과 버튼이 잘 보이게 */
+#bg { filter:saturate(.78) brightness(.8) contrast(1.06); background:#245a72; }
+#stage::after { content:""; position:absolute; inset:0; pointer-events:none; z-index:1; background:radial-gradient(ellipse at 50% 50%, transparent 55%, #04101a99 100%); }
+#cv { z-index:2; }
+#cv.panning { cursor:grabbing; }
 </style>
 
 <div id="app">
@@ -362,10 +368,10 @@ body.arena #bubble { top:calc(env(safe-area-inset-top) + 70px); }
 <script>globalThis.ORD_I18N_SPLIT=1;(function(){var L=["en","ja","zh-Hans","zh-Hant"],q=new URLSearchParams(location.search).get('lang'),s=null;try{s=localStorage.getItem('cjw.lang');if(!s||(s!=='ko'&&L.indexOf(s)<0))s=localStorage.getItem('ord.lang')}catch(e){}
 var l=(q&&(q==='ko'||L.indexOf(q)>=0))?q:(s&&(s==='ko'||L.indexOf(s)>=0))?s:null;if(!l){var n=(navigator.language||'en').toLowerCase();l=n.indexOf('ko')===0?'ko':n.indexOf('ja')===0?'ja':n.indexOf('zh')===0?(/tw|hk|mo|hant/.test(n)?'zh-Hant':'zh-Hans'):'en';}
 if(l!=='ko')document.write('<script src="i18n-'+l+'.js?v=be43a38605"><\/script>');})();</script>
-<script src="art-index.js?v=c5d2219fad"></script>
+<script src="art-index.js?v=dd0d764ca5"></script>
 <script src="ord-stage.js?v=e719f0e50a"></script>
 <script src="ord-stage3d.js?v=a2adfa091e"></script>
 <script src="pack.js?v=9349849b52"></script>
-<script src="app.js?v=10fb3d0e8f"></script>
+<script src="app.js?v=90681710fd"></script>
 <script src="https://ccct12.github.io/CJW_Games/sdk.js" async onload="try{CJWHub.visit('ord')}catch(e){}"></script>
 <script>if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){var hadSW=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',function(){if(!hadSW)return;var d=document.getElementById('dialog');if(d&&d.classList.contains('on')&&!sessionStorage.getItem('ord.swr')){sessionStorage.setItem('ord.swr','1');location.reload();}});addEventListener('load',function(){navigator.serviceWorker.register('sw.js').then(function(r){r.update();}).catch(function(){});});}</script>
