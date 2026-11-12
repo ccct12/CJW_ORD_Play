@@ -349,12 +349,8 @@ body.pcsplit #sminiw { position:fixed; right:12px; top:calc(env(safe-area-inset-
 body.pcsplit #smini { height:auto; aspect-ratio: 4 / 3; }
 body.pcsplit #sminit { font-size:12.5px; }
 
-@media (max-height: 520px) {
-  #sminiw { order:3; } #actions { order:5; margin-top:auto; } #combo { order:4; margin-top:auto; } #combo.on + #actions, #combo.on ~ #actions { margin-top:0; }
-}
-/* PC 넓은 화면의 스토리 존 옆 창: 메뉴가 오른쪽 위에 있으므로 오른쪽 아래에 둔다 */
-body.pcsplit #sminiw { top:auto; bottom:calc(env(safe-area-inset-bottom) + 12px); }
-body.pcsplit #combo { margin-top:2px; }
+/* 모든 기기: 9개 메뉴는 오른쪽 아래(휴대폰과 같게), 스토리 존 창은 오른쪽 위 */
+#sminiw { order:3; } #actions { order:5; margin-top:auto; } #combo { order:4; margin-top:auto; } #combo.on + #actions, #combo.on ~ #actions { margin-top:0; }
 /* 판매 버튼(나랜디처럼 붉은 테) */
 button.warn { border-color:rgba(255,107,107,.55) !important; color:#ffc9c9; background:rgba(120,20,30,.35); }
 button.warn:disabled { opacity:.45; }
