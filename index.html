@@ -376,6 +376,15 @@ button.warn:disabled { opacity:.45; }
 }
 .btns .sh { display:none; }
 @media (max-height: 430px) { .btns.cmd .lg { display:none; } .btns.cmd .sh { display:inline; } .sks { grid-template-columns:repeat(auto-fill, minmax(44px, 1fr)) !important; } }
+/* 스토리 존 창 접기(M) */
+.smbar { display:flex; align-items:center; justify-content:center; gap:6px; min-width:0; }
+#sminit { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; }
+#smin-x { flex:none; width:22px; height:20px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:12px; line-height:1; background:#ffffff14; box-shadow:inset 0 0 0 1px #ffffff22; cursor:pointer; }
+#smin-x:hover { background:#ffffff2a; }
+body.pcsplit #smin-x { width:28px; height:24px; font-size:14px; }
+body.smin #smini { display:none; }
+body.smin #sminiw { width:auto !important; max-width:min(34vw, 520px); padding:5px 8px; }
+body.smin #sminiw .smbar { gap:10px; }
 </style>
 
 <div id="app">
@@ -388,7 +397,7 @@ button.warn:disabled { opacity:.45; }
   <aside id="rside">
     <div id="res"></div>
     <div id="tbtns"></div>
-    <button id="sminiw" hidden><canvas id="smini"></canvas><span id="sminit"></span></button>
+    <button id="sminiw" hidden><canvas id="smini"></canvas><span class="smbar"><span id="sminit"></span><span id="smin-x" role="button" title="접기 (M)"></span></span></button>
     <div id="board" class="pane"></div>
     <button id="combo" class="pri"></button>
     <div id="actions" class="pane"></div>
@@ -407,6 +416,6 @@ if(l!=='ko')document.write('<script src="i18n-'+l+'.js?v=be43a38605"><\/script>'
 <script src="ord-stage3d.js?v=a2adfa091e"></script>
 <script src="ord-maps.js?v=0819395b56"></script>
 <script src="pack.js?v=9349849b52"></script>
-<script src="app.js?v=2ced026a5b"></script>
+<script src="app.js?v=7e5470f67e"></script>
 <script src="https://ccct12.github.io/CJW_Games/sdk.js" async onload="try{CJWHub.visit('ord')}catch(e){}"></script>
 <script>if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){var hadSW=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',function(){if(!hadSW)return;var d=document.getElementById('dialog');if(d&&d.classList.contains('on')&&!sessionStorage.getItem('ord.swr')){sessionStorage.setItem('ord.swr','1');location.reload();}});addEventListener('load',function(){navigator.serviceWorker.register('sw.js').then(function(r){r.update();}).catch(function(){});});}</script>
