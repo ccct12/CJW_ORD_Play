@@ -11,7 +11,7 @@ try{window.stop();}catch(e){}
 var T={ko:['브라우저에서 여는 중이에요','열리지 않으면 아래 버튼을 누르거나, 오른쪽 위 메뉴에서 <b>다른 브라우저로 열기</b>를 골라 주세요.','다시 열기'],ja:['ブラウザで開いています','開かない場合は下のボタンか、右上のメニューの<b>ブラウザで開く</b>を選んでください。','もう一度開く'],zh:['正在用浏览器打开','如果没有打开，请点下面的按钮，或在右上角菜单选择<b>用浏览器打开</b>。','重新打开']}[L]||['Opening in your browser','If nothing happens, tap the button below or choose <b>Open in browser</b> from the menu.','Open again'];
 document.documentElement.innerHTML=('<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;height:100vh;display:flex;align-items:center;justify-content:center;background:#070a14;color:#eef2ff;font:15px/1.6 system-ui,sans-serif;text-align:center;padding:24px;box-sizing:border-box"><div><b style="font-size:20px">'+T[0]+'</b><p style="color:#8e98bd">'+T[1]+'</p><a id="ext" href="'+ext.replace(/"/g,'&quot;')+'" style="display:inline-block;margin-top:6px;padding:12px 24px;border-radius:14px;background:#ff6a1a;color:#fff;font-weight:800;text-decoration:none">'+T[2]+'</a></div></body>');})();</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<script>window.ORD_I18N_V='be43a38605'</script>
+<script>window.ORD_I18N_V='b27fa838be'</script>
 <title>원피스 랜덤 디펜스</title>
 <meta name="theme-color" content="#06121f">
 <link rel="manifest" href="manifest.webmanifest">
@@ -254,7 +254,7 @@ body.rotate #rotate { display:flex; }
 #tbtns button, #tools button, .btns button, .res-in button { white-space:nowrap; }
 @media (max-height: 430px) { #tbtns button[data-k="pause"] span, #tbtns button[data-k="menu"] span { display:none; } #tbtns button { padding:2px 9px; } .btns button { min-height:30px; padding:2px 8px; font-size:11px; } }
 /* 스토리 존 작은 미리보기(오른쪽) */
-.arena { display:block; width:100%; height:180px; border-radius:12px; box-shadow:0 0 0 1px var(--line2); background:#2a2238; margin-bottom:8px; }
+.arena { display:block; width:100%; height:auto; aspect-ratio:16 / 9; max-height:300px; border-radius:12px; box-shadow:0 0 0 1px var(--line2); background:#2a2238; margin-bottom:8px; }
 #sminiw { flex:none; align-self:flex-end; display:flex; flex-direction:column; gap:3px; padding:4px; width:172px; min-height:0; border-radius:12px; }
 #sminiw[hidden] { display:none; }
 #smini { display:block; width:100%; height:96px; border-radius:9px; background:#2a2238; }
@@ -385,6 +385,7 @@ body.pcsplit #smin-x { width:28px; height:24px; font-size:14px; }
 body.smin #smini { display:none; }
 body.smin #sminiw { width:auto !important; max-width:min(34vw, 520px); padding:5px 8px; }
 body.smin #sminiw .smbar { gap:10px; }
+@media (max-height: 430px) { .arena { max-height:150px; } }
 </style>
 
 <div id="app">
@@ -410,12 +411,12 @@ body.smin #sminiw .smbar { gap:10px; }
 <div id="launch"></div><div id="dlg"></div><div id="bubble"></div><div id="tip"></div>
 <script>globalThis.ORD_I18N_SPLIT=1;(function(){var L=["en","ja","zh-Hans","zh-Hant"],q=new URLSearchParams(location.search).get('lang'),s=null;try{s=localStorage.getItem('cjw.lang');if(!s||(s!=='ko'&&L.indexOf(s)<0))s=localStorage.getItem('ord.lang')}catch(e){}
 var l=(q&&(q==='ko'||L.indexOf(q)>=0))?q:(s&&(s==='ko'||L.indexOf(s)>=0))?s:null;if(!l){var n=(navigator.language||'en').toLowerCase();l=n.indexOf('ko')===0?'ko':n.indexOf('ja')===0?'ja':n.indexOf('zh')===0?(/tw|hk|mo|hant/.test(n)?'zh-Hant':'zh-Hans'):'en';}
-if(l!=='ko')document.write('<script src="i18n-'+l+'.js?v=be43a38605"><\/script>');})();</script>
+if(l!=='ko')document.write('<script src="i18n-'+l+'.js?v=b27fa838be"><\/script>');})();</script>
 <script src="art-index.js?v=85a0d883fd"></script>
 <script src="ord-stage.js?v=e719f0e50a"></script>
 <script src="ord-stage3d.js?v=a2adfa091e"></script>
 <script src="ord-maps.js?v=0819395b56"></script>
 <script src="pack.js?v=9349849b52"></script>
-<script src="app.js?v=7e5470f67e"></script>
+<script src="app.js?v=21c328a0c2"></script>
 <script src="https://ccct12.github.io/CJW_Games/sdk.js" async onload="try{CJWHub.visit('ord')}catch(e){}"></script>
 <script>if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){var hadSW=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',function(){if(!hadSW)return;var d=document.getElementById('dialog');if(d&&d.classList.contains('on')&&!sessionStorage.getItem('ord.swr')){sessionStorage.setItem('ord.swr','1');location.reload();}});addEventListener('load',function(){navigator.serviceWorker.register('sw.js').then(function(r){r.update();}).catch(function(){});});}</script>
