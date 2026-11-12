@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<script>(function(){var OK=['ccct12.github.io','localhost','127.0.0.1'];var home='https://ccct12.github.io/CJW_ORD_Play/';var badHost=OK.indexOf(location.hostname)<0;var framed=false;try{framed=window.top!==window.self&&window.top.location.hostname!==location.hostname;}catch(e){framed=true;}if(badHost||framed){document.documentElement.innerHTML='';try{(framed?window.top:window).location.replace(home);}catch(e){try{window.stop();}catch(x){}var a=document.createElement('a');a.target='_top';a.href=home;a.textContent=home;a.style.cssText='display:block;margin:40vh auto 0;text-align:center;color:#ffd23f;font:16px sans-serif';document.documentElement.appendChild(a);}}})();</script>
 <script>(function(){var u=navigator.userAgent||'',h=location.href,L=(navigator.language||'ko').slice(0,2),and=/Android/i.test(u);if(!/^https?:/.test(h))return;
 var ext=null;
 if(/KAKAOTALK/i.test(u))ext='kakaotalk://web/openExternal?url='+encodeURIComponent(h);
@@ -15,7 +16,9 @@ document.documentElement.innerHTML=('<head><meta charset="utf-8"><meta name="vie
 <title>원피스 랜덤 디펜스</title>
 <meta name="theme-color" content="#06121f">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="icon-192.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -408,6 +411,17 @@ body.smin #sminiw .smbar { gap:10px; }
 @media (max-height: 430px) { #dialog { padding:8px; } #dialog .box { padding:10px 12px 10px; max-height:96dvh; } #dialog .dt { font-size:15px; margin:0 0 8px; padding-bottom:6px; } #dialog .grid2 { gap:6px; } #dialog .grid2 button, #dialog .btns button { min-height:36px; padding:5px 8px; } #dialog .langs { margin-top:8px !important; gap:5px; } #dialog .langs button { min-height:28px; padding:3px 6px; font-size:12px; } }
 /* 터치 기기: 배경 흐림(blur)을 끔 — 움직이는 게임 화면 위의 흐림은 매 프레임 다시 계산돼 휴대폰 발열의 큰 원인 */
 @media (pointer: coarse) { *, *::before, *::after { backdrop-filter:none !important; -webkit-backdrop-filter:none !important; } }
+
+/* ── 나랜디와 같은 화면 구성 ── */
+/* 왼쪽 위: 전체 선택만(영웅·화면 맞춤 버튼 숨김. 단축키 R은 그대로) */
+#t-hero, #t-fit { display:none !important; }
+/* 오른쪽 위: 속도 · 메뉴만. 일시정지·전체 화면은 메뉴 안에서 */
+#tbtns button[data-k="pause"], #tbtns button[data-k="fs"] { display:none !important; }
+#tbtns button[data-k="menu"] span { display:inline !important; }
+#tbtns { gap:6px; }
+#tbtns button { min-height:36px; padding:4px 13px; font-size:12.5px; }
+/* 모드 선택 화면: 종합 페이지·인스타그램 알약을 화면 오른쪽 위에(낮은 화면에서도) */
+@media (max-height: 430px) { #dialog .extmini { display:block !important; top:6px; right:8px; } #dialog .extin { display:none !important; } }
 </style>
 
 <div id="app">
@@ -439,6 +453,7 @@ if(l!=='ko')document.write('<script src="i18n-'+l+'.js?v=b27fa838be"><\/script>'
 <script src="ord-stage3d.js?v=a2adfa091e"></script>
 <script src="ord-maps.js?v=0819395b56"></script>
 <script src="pack.js?v=9349849b52"></script>
-<script src="app.js?v=663cfb8746"></script>
+<script src="ord-audio.js?v=f75bbb8e5b"></script>
+<script src="app.js?v=18f1b11157"></script>
 <script src="https://ccct12.github.io/CJW_Games/sdk.js" async onload="try{CJWHub.visit('ord')}catch(e){}"></script>
 <script>if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){var hadSW=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',function(){if(!hadSW)return;var d=document.getElementById('dialog');if(d&&d.classList.contains('on')&&!sessionStorage.getItem('ord.swr')){sessionStorage.setItem('ord.swr','1');location.reload();}});addEventListener('load',function(){navigator.serviceWorker.register('sw.js').then(function(r){r.update();}).catch(function(){});});}</script>
