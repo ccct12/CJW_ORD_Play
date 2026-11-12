@@ -387,6 +387,25 @@ body.smin #sminiw { width:auto !important; max-width:min(34vw, 520px); padding:5
 body.smin #sminiw .smbar { gap:10px; }
 @media (max-height: 430px) { .arena { max-height:150px; } }
 @media (max-height: 430px) { #end { align-items:flex-start; padding-top:calc(env(safe-area-inset-top) + 10px); } #end .box { padding:14px 18px; max-width:420px; } #end h3 { font-size:22px; margin:0 0 6px; } #end p { margin:6px 0; font-size:12.5px; } }
+
+/* CJW GAMES 종합 페이지 · 인스타그램 링크(나랜디와 같게) */
+.extlinks { display:flex; gap:8px; margin:10px 0 0; flex-wrap:wrap; }
+.extlinks .xl { flex:1 1 150px; display:flex; align-items:center; gap:9px; padding:8px 11px; border-radius:12px; background:#ffffff0d; box-shadow:0 0 0 1px var(--line2) inset; color:inherit; text-decoration:none; min-height:44px; text-align:left; }
+.extlinks .xl:hover { background:#ffffff18; }
+.extlinks .xl svg { width:26px; height:26px; flex:none; fill:none; stroke:currentColor; stroke-width:1.8; }
+.extlinks .xl:last-child svg { color:#ff6fa3; }
+.extlinks .xl span { display:flex; flex-direction:column; line-height:1.2; min-width:0; } .extlinks .xl b { font-size:13px; } .extlinks .xl small { font-size:11px; color:var(--dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+#endbox .extlinks { justify-content:center; margin-top:14px; }
+.item.card > .extlinks { margin:0; }
+.extlinks.xmini { margin:0; gap:6px; flex-wrap:nowrap; justify-content:flex-end; }
+.extlinks.xmini .xl { flex:none; min-height:36px; padding:4px 10px 4px 6px; gap:6px; border-radius:999px; background:#0b1022cc; backdrop-filter:blur(6px); }
+.extlinks.xmini .xl svg { width:22px; height:22px; } .extlinks.xmini .xl small { display:none; } .extlinks.xmini .xl b { font-size:12px; }
+.extlinks.xmini .xl:last-child b { font-size:0; } .extlinks.xmini .xl:last-child b::after { content:'@cjw.games'; font-size:12px; }
+#dialog .extmini { position:absolute; top:calc(env(safe-area-inset-top) + 10px); right:calc(env(safe-area-inset-right) + 12px); z-index:2; }
+@media (max-height: 430px) { .extlinks { margin-top:7px; gap:6px; } .extlinks .xl { padding:5px 9px; min-height:38px; } .extlinks .xl svg { width:22px; height:22px; } #dialog .extmini { top:6px; right:8px; } }
+#dialog .extin { display:none; }
+@media (max-height: 430px) { #dialog .extmini { display:none; } #dialog .extin { display:block; margin-top:8px; } #dialog .extin .extlinks.xmini { justify-content:center; } }
+@media (max-height: 430px) { #dialog { padding:8px; } #dialog .box { padding:10px 12px 10px; max-height:96dvh; } #dialog .dt { font-size:15px; margin:0 0 8px; padding-bottom:6px; } #dialog .grid2 { gap:6px; } #dialog .grid2 button, #dialog .btns button { min-height:36px; padding:5px 8px; } #dialog .langs { margin-top:8px !important; gap:5px; } #dialog .langs button { min-height:28px; padding:3px 6px; font-size:12px; } }
 </style>
 
 <div id="app">
@@ -418,6 +437,6 @@ if(l!=='ko')document.write('<script src="i18n-'+l+'.js?v=b27fa838be"><\/script>'
 <script src="ord-stage3d.js?v=a2adfa091e"></script>
 <script src="ord-maps.js?v=0819395b56"></script>
 <script src="pack.js?v=9349849b52"></script>
-<script src="app.js?v=61458b3a1d"></script>
+<script src="app.js?v=feba953e0f"></script>
 <script src="https://ccct12.github.io/CJW_Games/sdk.js" async onload="try{CJWHub.visit('ord')}catch(e){}"></script>
 <script>if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){var hadSW=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',function(){if(!hadSW)return;var d=document.getElementById('dialog');if(d&&d.classList.contains('on')&&!sessionStorage.getItem('ord.swr')){sessionStorage.setItem('ord.swr','1');location.reload();}});addEventListener('load',function(){navigator.serviceWorker.register('sw.js').then(function(r){r.update();}).catch(function(){});});}</script>
