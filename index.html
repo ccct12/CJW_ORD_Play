@@ -359,6 +359,27 @@ body.pcsplit #combo { margin-top:2px; }
 button.warn { border-color:rgba(255,107,107,.55) !important; color:#ffc9c9; background:rgba(120,20,30,.35); }
 button.warn:disabled { opacity:.45; }
 .sellhint { font-size:11px; line-height:1.35; margin:2px 0 4px; color:#c7cbe0; }
+/* ── 선택 카드 정리: 좁은 휴대폰에서도 줄이 고르게 ── */
+.btns.cmd { display:grid; grid-template-columns:repeat(auto-fill, minmax(78px, 1fr)); gap:5px; }
+.btns.cmd button { min-width:0; overflow:hidden; text-overflow:ellipsis; justify-content:center; padding:4px 6px; }
+.stats { flex-wrap:nowrap; overflow:hidden; } .stats span { flex:0 1 auto; min-width:0; white-space:nowrap; } .stats span:last-child { flex:none; }
+.stats .svg { flex:none; }
+.sks { grid-template-columns:repeat(auto-fill, minmax(58px, 1fr)) !important; } .sk { min-width:0; }
+.sellhint { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.sub .dim { font-weight:600; font-size:11px; margin-left:4px; }
+@media (max-height: 430px) {
+  #sel { padding:6px 7px; font-size:11px; }
+  .selh { gap:8px; } .selh > .big { width:38px; height:38px; border-radius:11px; } .selh .nm { font-size:13.5px; }
+  .selh .bar.big { height:13px; } .selh .bar.big b { font-size:9.5px; line-height:13px; }
+  .stats { gap:4px; margin:5px 0 1px; font-size:10.5px; } .stats span { padding:2px 6px; gap:3px; } .stats .svg { width:11px; height:11px; }
+  .btns.cmd { grid-template-columns:repeat(3, 1fr); gap:4px; margin:6px 0 2px; } .btns.cmd button { min-height:27px; font-size:10.5px; padding:2px 4px; border-radius:9px; }
+  .sellhint { -webkit-line-clamp:1; font-size:10px; margin:1px 0 2px; }
+  .sks { grid-template-columns:repeat(auto-fill, minmax(48px, 1fr)) !important; gap:4px; margin-top:5px; } .sk .ic { width:28px; height:28px; } .sk { font-size:8.5px; padding:3px 1px 2px; }
+  #tools { flex-wrap:nowrap; gap:3px; } #tools button { padding:2px 8px; font-size:11px; gap:3px; } #tools button .svg { width:13px; height:13px; }
+  .mh { font-size:12px; } .selicons { gap:5px; margin:5px 0 3px; } .selicons .sg .mini { width:30px; height:30px; }
+}
+.btns .sh { display:none; }
+@media (max-height: 430px) { .btns.cmd .lg { display:none; } .btns.cmd .sh { display:inline; } .sks { grid-template-columns:repeat(auto-fill, minmax(44px, 1fr)) !important; } }
 </style>
 
 <div id="app">
@@ -390,6 +411,6 @@ if(l!=='ko')document.write('<script src="i18n-'+l+'.js?v=be43a38605"><\/script>'
 <script src="ord-stage3d.js?v=a2adfa091e"></script>
 <script src="ord-maps.js?v=0819395b56"></script>
 <script src="pack.js?v=9349849b52"></script>
-<script src="app.js?v=b64021c7ee"></script>
+<script src="app.js?v=2ced026a5b"></script>
 <script src="https://ccct12.github.io/CJW_Games/sdk.js" async onload="try{CJWHub.visit('ord')}catch(e){}"></script>
 <script>if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){var hadSW=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',function(){if(!hadSW)return;var d=document.getElementById('dialog');if(d&&d.classList.contains('on')&&!sessionStorage.getItem('ord.swr')){sessionStorage.setItem('ord.swr','1');location.reload();}});addEventListener('load',function(){navigator.serviceWorker.register('sw.js').then(function(r){r.update();}).catch(function(){});});}</script>
