@@ -406,6 +406,8 @@ body.smin #sminiw .smbar { gap:10px; }
 #dialog .extin { display:none; }
 @media (max-height: 430px) { #dialog .extmini { display:none; } #dialog .extin { display:block; margin-top:8px; } #dialog .extin .extlinks.xmini { justify-content:center; } }
 @media (max-height: 430px) { #dialog { padding:8px; } #dialog .box { padding:10px 12px 10px; max-height:96dvh; } #dialog .dt { font-size:15px; margin:0 0 8px; padding-bottom:6px; } #dialog .grid2 { gap:6px; } #dialog .grid2 button, #dialog .btns button { min-height:36px; padding:5px 8px; } #dialog .langs { margin-top:8px !important; gap:5px; } #dialog .langs button { min-height:28px; padding:3px 6px; font-size:12px; } }
+/* 터치 기기: 배경 흐림(blur)을 끔 — 움직이는 게임 화면 위의 흐림은 매 프레임 다시 계산돼 휴대폰 발열의 큰 원인 */
+@media (pointer: coarse) { *, *::before, *::after { backdrop-filter:none !important; -webkit-backdrop-filter:none !important; } }
 </style>
 
 <div id="app">
@@ -437,6 +439,6 @@ if(l!=='ko')document.write('<script src="i18n-'+l+'.js?v=b27fa838be"><\/script>'
 <script src="ord-stage3d.js?v=a2adfa091e"></script>
 <script src="ord-maps.js?v=0819395b56"></script>
 <script src="pack.js?v=9349849b52"></script>
-<script src="app.js?v=feba953e0f"></script>
+<script src="app.js?v=663cfb8746"></script>
 <script src="https://ccct12.github.io/CJW_Games/sdk.js" async onload="try{CJWHub.visit('ord')}catch(e){}"></script>
 <script>if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){var hadSW=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',function(){if(!hadSW)return;var d=document.getElementById('dialog');if(d&&d.classList.contains('on')&&!sessionStorage.getItem('ord.swr')){sessionStorage.setItem('ord.swr','1');location.reload();}});addEventListener('load',function(){navigator.serviceWorker.register('sw.js').then(function(r){r.update();}).catch(function(){});});}</script>
