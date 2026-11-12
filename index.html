@@ -386,6 +386,7 @@ body.smin #smini { display:none; }
 body.smin #sminiw { width:auto !important; max-width:min(34vw, 520px); padding:5px 8px; }
 body.smin #sminiw .smbar { gap:10px; }
 @media (max-height: 430px) { .arena { max-height:150px; } }
+@media (max-height: 430px) { #end { align-items:flex-start; padding-top:calc(env(safe-area-inset-top) + 10px); } #end .box { padding:14px 18px; max-width:420px; } #end h3 { font-size:22px; margin:0 0 6px; } #end p { margin:6px 0; font-size:12.5px; } }
 </style>
 
 <div id="app">
@@ -417,6 +418,6 @@ if(l!=='ko')document.write('<script src="i18n-'+l+'.js?v=b27fa838be"><\/script>'
 <script src="ord-stage3d.js?v=a2adfa091e"></script>
 <script src="ord-maps.js?v=0819395b56"></script>
 <script src="pack.js?v=9349849b52"></script>
-<script src="app.js?v=21c328a0c2"></script>
+<script src="app.js?v=f14a3528ee"></script>
 <script src="https://ccct12.github.io/CJW_Games/sdk.js" async onload="try{CJWHub.visit('ord')}catch(e){}"></script>
 <script>if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){var hadSW=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',function(){if(!hadSW)return;var d=document.getElementById('dialog');if(d&&d.classList.contains('on')&&!sessionStorage.getItem('ord.swr')){sessionStorage.setItem('ord.swr','1');location.reload();}});addEventListener('load',function(){navigator.serviceWorker.register('sw.js').then(function(r){r.update();}).catch(function(){});});}</script>
